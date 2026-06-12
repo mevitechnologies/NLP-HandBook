@@ -1,0 +1,2572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NLP Handbook - Part 1A</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+
+body{
+    background:#f4f7fc;
+    font-family:'Segoe UI',sans-serif;
+}
+
+.hero{
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    color:white;
+    padding:80px 40px;
+    border-radius:25px;
+    margin-bottom:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.hero h1{
+    font-size:3rem;
+    font-weight:800;
+}
+
+.hero p{
+    font-size:1.1rem;
+}
+
+.sidebar{
+    position:sticky;
+    top:20px;
+}
+
+.sidebar-card{
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.sidebar .nav-link{
+    color:#334155;
+    font-weight:500;
+    border-radius:10px;
+}
+
+.sidebar .nav-link:hover{
+    background:#eff6ff;
+    color:#2563eb;
+}
+
+.content-card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.chapter-badge{
+    background:#dbeafe;
+    color:#1d4ed8;
+    padding:8px 15px;
+    border-radius:30px;
+    font-weight:600;
+    display:inline-block;
+}
+
+.pipeline{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    align-items:center;
+}
+
+.pipeline-box{
+    background:#2563eb;
+    color:white;
+    padding:12px 18px;
+    border-radius:12px;
+    font-weight:600;
+}
+
+.arrow{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.highlight-box{
+    background:#eff6ff;
+    border-left:5px solid #2563eb;
+    padding:15px;
+    border-radius:12px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid p-4">
+
+<div class="hero text-center">
+
+<h1>
+<i class="bi bi-cpu-fill"></i>
+Natural Language Processing
+</h1>
+
+<p>
+Part 1A - Introduction to NLP
+</p>
+
+<div class="mt-3">
+
+<span class="badge bg-light text-dark p-2">Artificial Intelligence</span>
+<span class="badge bg-light text-dark p-2">Machine Learning</span>
+<span class="badge bg-light text-dark p-2">Deep Learning</span>
+<span class="badge bg-light text-dark p-2">NLP</span>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<!-- Sidebar -->
+
+<div class="col-lg-3">
+
+<div class="sidebar">
+
+<div class="sidebar-card">
+
+<h5>
+<i class="bi bi-list-task"></i>
+Contents
+</h5>
+
+<nav class="nav flex-column">
+
+<a class="nav-link" href="#intro">Introduction</a>
+
+<a class="nav-link" href="#need">Why NLP?</a>
+
+<a class="nav-link" href="#pipeline">NLP Pipeline</a>
+
+<a class="nav-link" href="#aimldlnlp">AI vs ML vs DL vs NLP</a>
+
+<a class="nav-link" href="#applications">Applications</a>
+
+</nav>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="col-lg-9">
+
+<section id="intro">
+
+<div class="content-card">
+
+<span class="chapter-badge">
+Chapter 1
+</span>
+
+<h2 class="mt-3">
+What is NLP?
+</h2>
+
+<p>
+
+Natural Language Processing (NLP) is a branch of Artificial Intelligence that enables computers to understand, analyze, interpret and generate human language.
+
+</p>
+
+<div class="highlight-box">
+
+NLP acts as a bridge between Human Language and Computer Language.
+
+</div>
+
+</div>
+
+</section>
+
+<section id="need">
+
+<div class="content-card">
+
+<h2>
+Why NLP is Important?
+</h2>
+
+<ul>
+
+<li>Chatbots</li>
+<li>Voice Assistants</li>
+<li>Translation Systems</li>
+<li>Spam Detection</li>
+<li>Search Engines</li>
+<li>Sentiment Analysis</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<section id="pipeline">
+
+<div class="content-card">
+
+<h2>
+NLP Pipeline Visualization
+</h2>
+
+<div class="pipeline mt-4">
+
+<div class="pipeline-box">
+Raw Text
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Cleaning
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Tokenization
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Stopword Removal
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Vectorization
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+ML / DL
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="aimldlnlp">
+
+<div class="content-card">
+
+<h2>
+AI vs ML vs DL vs NLP
+</h2>
+
+<div class="accordion" id="accordionExample">
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button"
+data-bs-toggle="collapse"
+data-bs-target="#ai">
+
+Artificial Intelligence (AI)
+
+</button>
+
+</h2>
+
+<div id="ai" class="accordion-collapse collapse show">
+
+<div class="accordion-body">
+
+Making machines intelligent.
+
+Examples:
+
+<ul>
+<li>Robots</li>
+<li>Self Driving Cars</li>
+<li>Chess AI</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+data-bs-toggle="collapse"
+data-bs-target="#ml">
+
+Machine Learning
+
+</button>
+
+</h2>
+
+<div id="ml" class="accordion-collapse collapse">
+
+<div class="accordion-body">
+
+Learning patterns from data.
+
+</div>
+
+</div>
+
+</div>
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+data-bs-toggle="collapse"
+data-bs-target="#dl">
+
+Deep Learning
+
+</button>
+
+</h2>
+
+<div id="dl" class="accordion-collapse collapse">
+
+<div class="accordion-body">
+
+Neural Network based learning.
+
+</div>
+
+</div>
+
+</div>
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+data-bs-toggle="collapse"
+data-bs-target="#nlp">
+
+Natural Language Processing
+
+</button>
+
+</h2>
+
+<div id="nlp" class="accordion-collapse collapse">
+
+<div class="accordion-body">
+
+Processing and understanding human language.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="applications">
+
+<div class="content-card">
+
+<h2>
+Applications of NLP
+</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<div class="card h-100">
+
+<div class="card-body text-center">
+
+<i class="bi bi-chat-dots-fill fs-1 text-primary"></i>
+
+<h5 class="mt-3">
+Chatbots
+</h5>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card h-100">
+
+<div class="card-body text-center">
+
+<i class="bi bi-translate fs-1 text-success"></i>
+
+<h5 class="mt-3">
+Translation
+</h5>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card h-100">
+
+<div class="card-body text-center">
+
+<i class="bi bi-search fs-1 text-danger"></i>
+
+<h5 class="mt-3">
+Search Engines
+</h5>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ====================================================== -->
+<!-- PART 1B : NLP PIPELINE & TEXT PREPROCESSING -->
+<!-- ====================================================== -->
+
+<section id="part1b" class="mt-5">
+
+<div class="text-center mb-5">
+
+<span class="badge bg-primary fs-6 px-3 py-2">
+PART 1B
+</span>
+
+<h1 class="fw-bold mt-3">
+NLP Pipeline & Text Preprocessing
+</h1>
+
+<p class="text-muted">
+
+Before Machine Learning can learn from text,
+the text must be cleaned and transformed into a structured format.
+
+</p>
+
+</div>
+
+<!-- OVERVIEW -->
+
+<div class="content-card">
+
+<h2>
+<i class="bi bi-diagram-3-fill text-primary"></i>
+Complete NLP Pipeline
+</h2>
+
+<p>
+
+The NLP pipeline converts raw human language into machine-readable data.
+
+</p>
+
+<div class="pipeline mt-4">
+
+<div class="pipeline-box">
+Raw Text
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Cleaning
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Tokenization
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Stopwords
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Stemming
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Lemmatization
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Vectorization
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+ML / DL
+</div>
+
+</div>
+
+</div>
+
+<!-- RAW TEXT -->
+
+<div class="content-card">
+
+<h2>
+1. Raw Text Collection
+</h2>
+
+<p>
+
+The NLP process begins with collecting textual data.
+
+</p>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<h5>Sources</h5>
+
+<ul>
+
+<li>Emails</li>
+
+<li>WhatsApp Messages</li>
+
+<li>Tweets</li>
+
+<li>Reviews</li>
+
+<li>Articles</li>
+
+<li>Research Papers</li>
+
+<li>Chatbot Logs</li>
+
+</ul>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="code-box">
+
+"I LOVE NLP!!! 😍
+
+Visit www.mevi.com"
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CLEANING -->
+
+<div class="content-card">
+
+<h2>
+2. Text Cleaning
+</h2>
+
+<p>
+
+Text cleaning removes unnecessary information from raw text.
+
+</p>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<h5>Noise in Text</h5>
+
+<ul>
+
+<li>Punctuation</li>
+
+<li>URLs</li>
+
+<li>Numbers</li>
+
+<li>Special Characters</li>
+
+<li>Emojis</li>
+
+<li>Extra Spaces</li>
+
+</ul>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="highlight-box">
+
+Before:
+
+I LOVE NLP!!! 😍
+
+After:
+
+i love nlp
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- TOKENIZATION -->
+
+<div class="content-card">
+
+<h2>
+3. Tokenization
+</h2>
+
+<p>
+
+Tokenization breaks text into smaller pieces called tokens.
+
+</p>
+
+<div class="accordion" id="tokenAccordion">
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button"
+data-bs-toggle="collapse"
+data-bs-target="#wordToken">
+
+Word Tokenization
+
+</button>
+
+</h2>
+
+<div id="wordToken"
+class="accordion-collapse collapse show">
+
+<div class="accordion-body">
+
+Input:
+
+<div class="code-box">
+
+I Love NLP
+
+</div>
+
+Output:
+
+<div class="code-box">
+
+["I","Love","NLP"]
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+data-bs-toggle="collapse"
+data-bs-target="#sentenceToken">
+
+Sentence Tokenization
+
+</button>
+
+</h2>
+
+<div id="sentenceToken"
+class="accordion-collapse collapse">
+
+<div class="accordion-body">
+
+Input:
+
+<div class="code-box">
+
+I Love NLP.
+NLP is Amazing.
+
+</div>
+
+Output:
+
+<div class="code-box">
+
+[
+"I Love NLP",
+"NLP is Amazing"
+]
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- STOPWORDS -->
+
+<div class="content-card">
+
+<h2>
+4. Stopword Removal
+</h2>
+
+<p>
+
+Stopwords are common words that usually do not add much meaning.
+
+</p>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<h5>Examples</h5>
+
+<ul>
+
+<li>is</li>
+
+<li>am</li>
+
+<li>are</li>
+
+<li>the</li>
+
+<li>a</li>
+
+<li>an</li>
+
+<li>was</li>
+
+<li>were</li>
+
+</ul>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="code-box">
+
+Input:
+
+I am learning NLP
+
+Output:
+
+learning NLP
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- STEMMING -->
+
+<div class="content-card">
+
+<h2>
+5. Stemming
+</h2>
+
+<p>
+
+Stemming removes suffixes and prefixes to obtain the root word.
+
+</p>
+
+<table class="table table-bordered">
+
+<tr>
+<th>Original Word</th>
+<th>Stemmed Word</th>
+</tr>
+
+<tr>
+<td>running</td>
+<td>run</td>
+</tr>
+
+<tr>
+<td>playing</td>
+<td>play</td>
+</tr>
+
+<tr>
+<td>studies</td>
+<td>studi</td>
+</tr>
+
+</table>
+
+<div class="alert alert-warning">
+
+Stemming is fast but may create invalid words.
+
+</div>
+
+</div>
+
+<!-- LEMMATIZATION -->
+
+<div class="content-card">
+
+<h2>
+6. Lemmatization
+</h2>
+
+<p>
+
+Lemmatization converts words into their dictionary base form.
+
+</p>
+
+<table class="table table-bordered">
+
+<tr>
+<th>Original Word</th>
+<th>Lemma</th>
+</tr>
+
+<tr>
+<td>running</td>
+<td>run</td>
+</tr>
+
+<tr>
+<td>better</td>
+<td>good</td>
+</tr>
+
+<tr>
+<td>studies</td>
+<td>study</td>
+</tr>
+
+</table>
+
+<div class="alert alert-success">
+
+Lemmatization produces meaningful words.
+
+</div>
+
+</div>
+
+<!-- COMPARISON -->
+
+<div class="content-card">
+
+<h2>
+Stemming vs Lemmatization
+</h2>
+
+<table class="table table-striped">
+
+<tr>
+
+<th>Feature</th>
+<th>Stemming</th>
+<th>Lemmatization</th>
+
+</tr>
+
+<tr>
+
+<td>Speed</td>
+<td>Fast</td>
+<td>Slower</td>
+
+</tr>
+
+<tr>
+
+<td>Accuracy</td>
+<td>Lower</td>
+<td>Higher</td>
+
+</tr>
+
+<tr>
+
+<td>Dictionary Based</td>
+<td>No</td>
+<td>Yes</td>
+
+</tr>
+
+<tr>
+
+<td>Meaningful Output</td>
+<td>No</td>
+<td>Yes</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- COMPLETE WORKFLOW -->
+
+<div class="content-card">
+
+<h2>
+Complete Preprocessing Workflow
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+I LOVE NLP!!!
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+i love nlp
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+['i','love','nlp']
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+['love','nlp']
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+['love','nlp']
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ====================================================== -->
+<!-- PART 1C : TEXT VECTORIZATION -->
+<!-- ====================================================== -->
+
+<section id="part1c" class="mt-5">
+
+<div class="text-center mb-5">
+
+<span class="badge bg-success fs-6 px-3 py-2">
+PART 1C
+</span>
+
+<h1 class="fw-bold mt-3">
+Text Vectorization
+</h1>
+
+<p class="text-muted">
+
+Converting Human Language into Machine Understandable Numbers
+
+</p>
+
+</div>
+
+<!-- INTRODUCTION -->
+
+<div class="content-card">
+
+<h2>
+<i class="bi bi-bar-chart-fill text-success"></i>
+Why Text Must Become Numbers?
+</h2>
+
+<p>
+
+Humans understand words naturally.
+
+Computers understand only numbers.
+
+Before Machine Learning can learn from text,
+we must convert text into numerical vectors.
+
+</p>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<h5>Human Understands</h5>
+
+<div class="code-box">
+
+I Love NLP
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<h5>Computer Understands</h5>
+
+<div class="code-box">
+
+[1,0,1]
+
+0.78
+
+101100
+
+</div>
+
+</div>
+
+</div>
+
+<div class="highlight-box mt-3">
+
+Text → Numbers → Machine Learning
+
+This conversion process is called Vectorization.
+
+</div>
+
+</div>
+
+<!-- VISUALIZATION -->
+
+<div class="content-card">
+
+<h2>
+Text Vectorization Pipeline
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Raw Text
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Vocabulary
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Vectorization
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Feature Matrix
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Machine Learning
+</div>
+
+</div>
+
+</div>
+
+<!-- VOCABULARY -->
+
+<div class="content-card">
+
+<h2>
+1. Vocabulary Creation
+</h2>
+
+<p>
+
+Vocabulary is the collection of all unique words present in a dataset.
+
+</p>
+
+<div class="code-box">
+
+Sentence:
+
+I Love NLP
+
+Vocabulary:
+
+["I", "Love", "NLP"]
+
+</div>
+
+<p class="mt-3">
+
+Each unique word receives a position (index).
+
+</p>
+
+</div>
+
+<!-- ONE HOT ENCODING -->
+
+<div class="content-card">
+
+<h2>
+2. One Hot Encoding
+</h2>
+
+<p>
+
+One Hot Encoding represents each word using binary vectors.
+
+Only one position becomes 1.
+
+All other positions remain 0.
+
+</p>
+
+<table class="table table-bordered">
+
+<tr>
+<th>Word</th>
+<th>Vector</th>
+</tr>
+
+<tr>
+<td>I</td>
+<td>[1,0,0]</td>
+</tr>
+
+<tr>
+<td>Love</td>
+<td>[0,1,0]</td>
+</tr>
+
+<tr>
+<td>NLP</td>
+<td>[0,0,1]</td>
+</tr>
+
+</table>
+
+<div class="pipeline mt-4">
+
+<div class="pipeline-box">
+I
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+[1,0,0]
+</div>
+
+</div>
+
+<br>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Love
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+[0,1,0]
+</div>
+
+</div>
+
+<br>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+NLP
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+[0,0,1]
+</div>
+
+</div>
+
+</div>
+
+<!-- SPARSE MATRIX -->
+
+<div class="content-card">
+
+<h2>
+Problem with One Hot Encoding
+</h2>
+
+<h4>
+Sparse Matrix
+</h4>
+
+<p>
+
+Suppose vocabulary contains 10,000 words.
+
+</p>
+
+<div class="code-box">
+
+[0,0,0,0,0,0,0,1,0,0,0,0...]
+
+</div>
+
+<p>
+
+Most values become zero.
+
+This wastes memory and computational power.
+
+</p>
+
+<div class="alert alert-warning">
+
+This problem is called Sparse Matrix.
+
+</div>
+
+</div>
+
+<!-- BAG OF WORDS -->
+
+<div class="content-card">
+
+<h2>
+3. Bag of Words (BoW)
+</h2>
+
+<p>
+
+Bag of Words counts how many times each word appears.
+
+</p>
+
+<div class="code-box">
+
+Sentence:
+
+I Love NLP NLP
+
+</div>
+
+<table class="table table-bordered">
+
+<tr>
+
+<th>Word</th>
+<th>Count</th>
+
+</tr>
+
+<tr>
+<td>I</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>Love</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>NLP</td>
+<td>2</td>
+</tr>
+
+</table>
+
+<div class="highlight-box">
+
+Vector:
+
+[1,1,2]
+
+</div>
+
+</div>
+
+<!-- BOW WORKFLOW -->
+
+<div class="content-card">
+
+<h2>
+BoW Workflow
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+I Love NLP NLP
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Count Words
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+[1,1,2]
+</div>
+
+</div>
+
+</div>
+
+<!-- LIMITATION -->
+
+<div class="content-card">
+
+<h2>
+Limitation of Bag of Words
+</h2>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<div class="code-box">
+
+Sentence 1:
+
+I Love NLP
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="code-box">
+
+Sentence 2:
+
+NLP Love I
+
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="highlight-box">
+
+Both generate:
+
+[1,1,1]
+
+</div>
+
+<div class="alert alert-danger mt-3">
+
+Word order is lost.
+
+Meaning is ignored.
+
+</div>
+
+</div>
+
+<!-- COUNT VECTORIZER -->
+
+<div class="content-card">
+
+<h2>
+4. Count Vectorizer
+</h2>
+
+<p>
+
+CountVectorizer is a Scikit-Learn tool that automatically:
+
+</p>
+
+<ul>
+
+<li>Creates Vocabulary</li>
+
+<li>Counts Words</li>
+
+<li>Builds Feature Matrix</li>
+
+</ul>
+
+<div class="code-box">
+
+Doc1:
+
+I Love NLP
+
+Doc2:
+
+NLP is Amazing
+
+</div>
+
+<h5 class="mt-4">
+Generated Matrix
+</h5>
+
+<table class="table table-bordered">
+
+<tr>
+
+<th>Document</th>
+<th>I</th>
+<th>Love</th>
+<th>NLP</th>
+<th>is</th>
+<th>Amazing</th>
+
+</tr>
+
+<tr>
+
+<td>Doc1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Doc2</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- NGRAMS -->
+
+<div class="content-card">
+
+<h2>
+5. N-Grams
+</h2>
+
+<p>
+
+N-Grams preserve word sequence.
+
+</p>
+
+<div class="accordion" id="ngramAccordion">
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button"
+data-bs-toggle="collapse"
+data-bs-target="#uni">
+
+Unigram
+
+</button>
+
+</h2>
+
+<div id="uni"
+class="accordion-collapse collapse show">
+
+<div class="accordion-body">
+
+I
+
+Love
+
+NLP
+
+</div>
+
+</div>
+
+</div>
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+data-bs-toggle="collapse"
+data-bs-target="#bi">
+
+Bigram
+
+</button>
+
+</h2>
+
+<div id="bi"
+class="accordion-collapse collapse">
+
+<div class="accordion-body">
+
+I Love
+
+Love NLP
+
+</div>
+
+</div>
+
+</div>
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+data-bs-toggle="collapse"
+data-bs-target="#tri">
+
+Trigram
+
+</button>
+
+</h2>
+
+<div id="tri"
+class="accordion-collapse collapse">
+
+<div class="accordion-body">
+
+I Love NLP
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- WHY NGRAMS -->
+
+<div class="content-card">
+
+<h2>
+Why N-Grams Are Important?
+</h2>
+
+<div class="code-box">
+
+not good
+
+</div>
+
+<p>
+
+Without N-Grams:
+
+</p>
+
+<div class="code-box">
+
+not
+
+good
+
+</div>
+
+<p>
+
+Meaning may be lost.
+
+</p>
+
+<div class="highlight-box">
+
+Bigram:
+
+not good
+
+</div>
+
+<p class="mt-3">
+
+The phrase meaning is preserved.
+
+</p>
+
+</div>
+
+<!-- COMPARISON -->
+
+<div class="content-card">
+
+<h2>
+Comparison of Techniques
+</h2>
+
+<table class="table table-striped table-bordered">
+
+<tr>
+
+<th>Technique</th>
+<th>Advantage</th>
+<th>Limitation</th>
+
+</tr>
+
+<tr>
+
+<td>One Hot Encoding</td>
+<td>Simple</td>
+<td>Sparse Matrix</td>
+
+</tr>
+
+<tr>
+
+<td>Bag of Words</td>
+<td>Counts Frequency</td>
+<td>No Context</td>
+
+</tr>
+
+<tr>
+
+<td>Count Vectorizer</td>
+<td>Automatic</td>
+<td>No Meaning</td>
+
+</tr>
+
+<tr>
+
+<td>N-Grams</td>
+<td>Captures Sequence</td>
+<td>Large Feature Space</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- COMPLETE VECTORIZATION FLOW -->
+
+<div class="content-card">
+
+<h2>
+Complete Vectorization Flow
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Text
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Vocabulary
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+One Hot
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+BoW
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Count Vectorizer
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+N-Grams
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+ML Models
+</div>
+
+</div>
+
+</div>
+
+<!-- QUIZ -->
+
+<div class="content-card">
+
+<h2>
+Quiz
+</h2>
+
+<ol>
+
+<li>Why do we convert text into numbers?</li>
+
+<li>What is a vocabulary?</li>
+
+<li>Explain One Hot Encoding.</li>
+
+<li>What is Sparse Matrix?</li>
+
+<li>Explain Bag of Words.</li>
+
+<li>What is Count Vectorizer?</li>
+
+<li>What are N-Grams?</li>
+
+<li>Difference between Bigram and Trigram?</li>
+
+<li>Why are N-Grams useful?</li>
+
+<li>What are the limitations of BoW?</li>
+
+</ol>
+
+</div>
+
+<!-- INTERVIEW QUESTIONS -->
+
+<div class="content-card">
+
+<h2>
+Interview Questions
+</h2>
+
+<ol>
+
+<li>What is Vectorization in NLP?</li>
+
+<li>Why are numerical vectors required for ML?</li>
+
+<li>Explain One Hot Encoding with example.</li>
+
+<li>What is a Sparse Matrix?</li>
+
+<li>Explain Bag of Words.</li>
+
+<li>Difference between BoW and CountVectorizer?</li>
+
+<li>What are N-Grams?</li>
+
+<li>Why are N-Grams important in sentiment analysis?</li>
+
+<li>Explain feature matrices.</li>
+
+<li>What are the limitations of traditional vectorization techniques?</li>
+
+</ol>
+
+</div>
+
+</section>
+
+
+</div>
+<!-- ====================================================== -->
+<!-- PART 1D : TF-IDF & FEATURE IMPORTANCE -->
+<!-- ====================================================== -->
+
+<section id="part1d" class="mt-5">
+
+<div class="text-center mb-5">
+
+<span class="badge bg-danger fs-6 px-3 py-2">
+PART 1D
+</span>
+
+<h1 class="fw-bold mt-3">
+TF-IDF & Feature Importance
+</h1>
+
+<p class="text-muted">
+
+Understanding how Machine Learning identifies important words
+instead of simply counting them.
+
+</p>
+
+</div>
+
+<!-- INTRODUCTION -->
+
+<div class="content-card">
+
+<h2>
+<i class="bi bi-graph-up-arrow text-danger"></i>
+Why TF-IDF?
+</h2>
+
+<p>
+
+Bag of Words counts word frequency.
+
+However, not every frequently occurring word is important.
+
+</p>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<h5>Common Words</h5>
+
+<div class="code-box">
+
+is
+am
+are
+the
+was
+were
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<h5>Important Words</h5>
+
+<div class="code-box">
+
+NLP
+Machine Learning
+ChatGPT
+Transformer
+
+</div>
+
+</div>
+
+</div>
+
+<div class="alert alert-warning mt-3">
+
+TF-IDF helps identify important words
+and reduces the impact of common words.
+
+</div>
+
+</div>
+
+<!-- TFIDF OVERVIEW -->
+
+<div class="content-card">
+
+<h2>
+What is TF-IDF?
+</h2>
+
+<p>
+
+TF-IDF stands for:
+
+</p>
+
+<ul>
+
+<li><strong>TF</strong> → Term Frequency</li>
+
+<li><strong>IDF</strong> → Inverse Document Frequency</li>
+
+</ul>
+
+<div class="highlight-box">
+
+TF-IDF measures how important a word is
+within a document compared to all documents.
+
+</div>
+
+</div>
+
+<!-- TF -->
+
+<div class="content-card">
+
+<h2>
+1. Term Frequency (TF)
+</h2>
+
+<p>
+
+Measures how often a word appears in a document.
+
+</p>
+
+<div class="formula-card">
+
+TF = Number of Times Word Appears
+     --------------------------------
+       Total Number of Words
+
+</div>
+
+<br>
+
+<h5>Example</h5>
+
+<div class="code-box">
+
+Document:
+
+NLP NLP AI
+
+</div>
+
+<table class="table table-bordered mt-3">
+
+<tr>
+<th>Word</th>
+<th>Count</th>
+</tr>
+
+<tr>
+<td>NLP</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>AI</td>
+<td>1</td>
+</tr>
+
+</table>
+
+<div class="highlight-box">
+
+TF(NLP)
+
+= 2 / 3
+
+= 0.67
+
+</div>
+
+</div>
+
+<!-- IDF -->
+
+<div class="content-card">
+
+<h2>
+2. Inverse Document Frequency (IDF)
+</h2>
+
+<p>
+
+Measures how rare a word is across all documents.
+
+</p>
+
+<div class="formula-card">
+
+IDF = log(
+          Total Documents
+          ---------------
+          Documents Containing Word
+         )
+
+</div>
+
+<br>
+
+<div class="code-box">
+
+Document 1:
+NLP is Amazing
+
+Document 2:
+AI is Powerful
+
+Document 3:
+NLP is Useful
+
+</div>
+
+<br>
+
+<table class="table table-bordered">
+
+<tr>
+<th>Word</th>
+<th>Documents Appears In</th>
+<th>DF</th>
+</tr>
+
+<tr>
+<td>is</td>
+<td>All 3 Documents</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>Amazing</td>
+<td>Only Document 1</td>
+<td>1</td>
+</tr>
+
+</table>
+
+<div class="highlight-box">
+
+Rare words receive higher IDF scores.
+
+</div>
+
+</div>
+
+<!-- TFIDF FORMULA -->
+
+<div class="content-card">
+
+<h2>
+3. Final TF-IDF Formula
+</h2>
+
+<div class="formula-card">
+
+TF-IDF = TF × IDF
+
+</div>
+
+<p class="mt-4">
+
+Words that occur frequently in one document
+but rarely elsewhere obtain higher scores.
+
+</p>
+
+</div>
+
+<!-- WORKED EXAMPLE -->
+
+<div class="content-card">
+
+<h2>
+Complete Numerical Example
+</h2>
+
+<div class="code-box">
+
+Document:
+
+NLP NLP AI
+
+</div>
+
+<br>
+
+<h5>Step 1 : Calculate TF</h5>
+
+<div class="highlight-box">
+
+TF(NLP)
+
+= 2 / 3
+
+= 0.67
+
+</div>
+
+<br>
+
+<h5>Step 2 : Calculate IDF</h5>
+
+<div class="highlight-box">
+
+Assume:
+
+N = 3
+
+DF = 1
+
+IDF
+
+= log(3 / 1)
+
+= 1.09
+
+</div>
+
+<br>
+
+<h5>Step 3 : TF-IDF</h5>
+
+<div class="highlight-box">
+
+TF-IDF
+
+= 0.67 × 1.09
+
+= 0.73
+
+</div>
+
+</div>
+
+<!-- VISUALIZATION -->
+
+<div class="content-card">
+
+<h2>
+TF-IDF Workflow
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Documents
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Word Count
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+TF
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+IDF
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+TF-IDF Score
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Machine Learning
+</div>
+
+</div>
+
+</div>
+
+<!-- COMPARISON -->
+
+<div class="content-card">
+
+<h2>
+Comparison of Vectorization Techniques
+</h2>
+
+<table class="table table-striped table-bordered">
+
+<tr>
+
+<th>Technique</th>
+<th>Stores</th>
+<th>Importance</th>
+<th>Context</th>
+
+</tr>
+
+<tr>
+
+<td>One Hot Encoding</td>
+<td>Presence</td>
+<td>❌</td>
+<td>❌</td>
+
+</tr>
+
+<tr>
+
+<td>Bag of Words</td>
+<td>Count</td>
+<td>❌</td>
+<td>❌</td>
+
+</tr>
+
+<tr>
+
+<td>Count Vectorizer</td>
+<td>Count</td>
+<td>❌</td>
+<td>❌</td>
+
+</tr>
+
+<tr>
+
+<td>N-Grams</td>
+<td>Sequence</td>
+<td>❌</td>
+<td>✔</td>
+
+</tr>
+
+<tr class="table-success">
+
+<td>TF-IDF</td>
+<td>Importance</td>
+<td>✔</td>
+<td>❌</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- ADVANTAGES -->
+
+<div class="content-card">
+
+<h2>
+Advantages of TF-IDF
+</h2>
+
+<ul>
+
+<li>Highlights important words</li>
+
+<li>Reduces common word impact</li>
+
+<li>Improves classification accuracy</li>
+
+<li>Efficient and simple</li>
+
+<li>Widely used in traditional NLP</li>
+
+</ul>
+
+</div>
+
+<!-- LIMITATIONS -->
+
+<div class="content-card">
+
+<h2>
+Limitations of TF-IDF
+</h2>
+
+<ul>
+
+<li>Cannot understand meaning</li>
+
+<li>Cannot understand context</li>
+
+<li>Cannot understand synonyms</li>
+
+<li>Ignores sentence structure</li>
+
+<li>No semantic understanding</li>
+
+</ul>
+
+<div class="alert alert-danger">
+
+Modern NLP models use Word Embeddings and Transformers
+to overcome these limitations.
+
+</div>
+
+</div>
+
+<!-- PYTHON -->
+
+<div class="content-card">
+
+<h2>
+Python Example
+</h2>
+
+<div class="code-box">
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+docs = [
+
+"I love NLP",
+
+"NLP is amazing",
+
+"AI is powerful"
+
+]
+
+tfidf = TfidfVectorizer()
+
+X = tfidf.fit_transform(docs)
+
+print(tfidf.get_feature_names_out())
+
+print(X.toarray())
+
+</div>
+
+</div>
+
+<!-- COMPLETE PART 1 SUMMARY -->
+
+<div class="content-card">
+
+<h2>
+Part 1 Complete Roadmap
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Introduction
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Preprocessing
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+One Hot
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+BoW
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Count Vectorizer
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+N-Grams
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+TF-IDF
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Machine Learning
+</div>
+
+</div>
+
+</div>
+
+<!-- QUIZ -->
+
+<div class="content-card">
+
+<h2>
+Quiz
+</h2>
+
+<ol>
+
+<li>What does TF-IDF stand for?</li>
+
+<li>Why is TF-IDF better than Bag of Words?</li>
+
+<li>Write the TF formula.</li>
+
+<li>Write the IDF formula.</li>
+
+<li>Write the TF-IDF formula.</li>
+
+<li>What is Document Frequency?</li>
+
+<li>Why do common words get low scores?</li>
+
+<li>What are the limitations of TF-IDF?</li>
+
+<li>Difference between CountVectorizer and TF-IDF?</li>
+
+<li>Why are embeddings preferred today?</li>
+
+</ol>
+
+</div>
+
+<!-- INTERVIEW -->
+
+<div class="content-card">
+
+<h2>
+Interview Questions
+</h2>
+
+<ol>
+
+<li>Explain TF-IDF with example.</li>
+
+<li>Difference between TF and IDF?</li>
+
+<li>Why is TF-IDF important?</li>
+
+<li>What is Document Frequency?</li>
+
+<li>Why is TF-IDF better than BoW?</li>
+
+<li>What are the limitations of TF-IDF?</li>
+
+<li>Explain TfidfVectorizer.</li>
+
+<li>What is Feature Importance?</li>
+
+<li>How does TF-IDF help ML models?</li>
+
+<li>Difference between traditional NLP and embeddings?</li>
+
+</ol>
+
+</div>
+
+</section>
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>
