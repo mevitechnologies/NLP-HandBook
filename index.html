@@ -101,7 +101,66 @@ body{
     padding:15px;
     border-radius:12px;
 }
+.code-box{
+    background:#0f172a;
+    color:#f8fafc;
+    padding:15px;
+    border-radius:12px;
+    font-family:Consolas,monospace;
+    white-space:pre-line;
+    overflow-x:auto;
+}
 
+.formula-card{
+    background:#eef2ff;
+    border:2px solid #c7d2fe;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    font-size:22px;
+    font-weight:700;
+    color:#1e3a8a;
+}
+.sidebar{
+    position:sticky;
+    top:20px;
+    max-height:90vh;
+    overflow-y:auto;
+}
+
+.sidebar::-webkit-scrollbar{
+    width:6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+    background:#cbd5e1;
+    border-radius:10px;
+}
+
+.sidebar-card{
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.sidebar .nav-link{
+    color:#334155;
+    font-size:14px;
+    padding:8px 12px;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.sidebar .nav-link:hover{
+    background:#eff6ff;
+    color:#2563eb;
+    transform:translateX(5px);
+}
+
+.sidebar .fw-bold{
+    color:#1e3a8a;
+}
 </style>
 </head>
 
@@ -135,32 +194,138 @@ Part 1A - Introduction to NLP
 
 <!-- Sidebar -->
 
-<div class="col-lg-3">
+<!-- ================= SIDEBAR ================= -->
 
 <div class="sidebar">
 
 <div class="sidebar-card">
 
-<h5>
-<i class="bi bi-list-task"></i>
-Contents
-</h5>
+<h4 class="fw-bold mb-3">
+<i class="bi bi-journal-richtext text-primary"></i>
+ NLP Handbook
+</h4>
+
+<div class="progress mb-4" style="height:10px;">
+    <div class="progress-bar bg-primary" style="width:25%"></div>
+</div>
 
 <nav class="nav flex-column">
 
-<a class="nav-link" href="#intro">Introduction</a>
+<!-- PART 1 -->
 
-<a class="nav-link" href="#need">Why NLP?</a>
+<h6 class="text-uppercase text-muted mt-2 mb-2">
+Part 1 : NLP Fundamentals
+</h6>
 
-<a class="nav-link" href="#pipeline">NLP Pipeline</a>
+<a class="nav-link" href="#intro">
+<i class="bi bi-house-door-fill"></i>
+ Introduction to NLP
+</a>
 
-<a class="nav-link" href="#aimldlnlp">AI vs ML vs DL vs NLP</a>
+<a class="nav-link" href="#need">
+<i class="bi bi-question-circle-fill"></i>
+ Why NLP?
+</a>
 
-<a class="nav-link" href="#applications">Applications</a>
+<a class="nav-link" href="#pipeline">
+<i class="bi bi-diagram-3-fill"></i>
+ NLP Pipeline
+</a>
 
-</nav>
+<a class="nav-link" href="#aimldlnlp">
+<i class="bi bi-cpu-fill"></i>
+ AI vs ML vs DL vs NLP
+</a>
+
+<a class="nav-link" href="#applications">
+<i class="bi bi-grid-fill"></i>
+ Applications
+</a>
+
+<hr>
+
+<a class="nav-link fw-bold" href="#part1b">
+<i class="bi bi-funnel-fill"></i>
+ Part 1B - Preprocessing
+</a>
+
+<a class="nav-link ps-4" href="#cleaning">
+• Text Cleaning
+</a>
+
+<a class="nav-link ps-4" href="#tokenization">
+• Tokenization
+</a>
+
+<a class="nav-link ps-4" href="#stopwords">
+• Stopword Removal
+</a>
+
+<a class="nav-link ps-4" href="#stemming">
+• Stemming
+</a>
+
+<a class="nav-link ps-4" href="#lemmatization">
+• Lemmatization
+</a>
+
+<hr>
+
+<a class="nav-link fw-bold" href="#part1c">
+<i class="bi bi-bar-chart-fill"></i>
+ Part 1C - Vectorization
+</a>
+
+<a class="nav-link ps-4" href="#onehot">
+• One Hot Encoding
+</a>
+
+<a class="nav-link ps-4" href="#bow">
+• Bag of Words
+</a>
+
+<a class="nav-link ps-4" href="#countvectorizer">
+• Count Vectorizer
+</a>
+
+<a class="nav-link ps-4" href="#ngrams">
+• N-Grams
+</a>
+
+<hr>
+
+<a class="nav-link fw-bold" href="#part1d">
+<i class="bi bi-graph-up-arrow"></i>
+ Part 1D - TF-IDF
+</a>
+
+<a class="nav-link ps-4" href="#tf">
+• Term Frequency
+</a>
+
+<a class="nav-link ps-4" href="#idf">
+• Inverse Document Frequency
+</a>
+
+<a class="nav-link ps-4" href="#tfidfworkflow">
+• TF-IDF Workflow
+</a>
+
+<a class="nav-link ps-4" href="#comparison">
+• Comparison
+</a>
+
+<hr>
+
+<div class="mt-3">
+
+<span class="badge bg-primary w-100 p-2">
+Part 1 Complete
+</span>
 
 </div>
+
+</nav>
 
 </div>
 
@@ -1882,8 +2047,6 @@ Interview Questions
 
 </section>
 
-
-</div>
 <!-- ====================================================== -->
 <!-- PART 1D : TF-IDF & FEATURE IMPORTANCE -->
 <!-- ====================================================== -->
@@ -2561,6 +2724,8 @@ Interview Questions
 </div>
 
 </section>
+</div>
+
 </div>
 
 </div>
