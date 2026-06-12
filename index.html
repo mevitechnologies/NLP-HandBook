@@ -7152,6 +7152,3350 @@ Interview Questions
 </div>
 
 </section>
+<!-- ====================================================== -->
+<!-- PART 2D : SKIP-GRAM -->
+<!-- ====================================================== -->
+
+<section id="skipgram" class="mt-5">
+
+<div class="text-center mb-5">
+
+<span class="badge bg-danger fs-6 px-3 py-2">
+PART 2D
+</span>
+
+<h1 class="fw-bold mt-3">
+Skip-Gram Architecture
+</h1>
+
+<p class="text-muted">
+
+Predicting Context Words Using the Target Word
+
+</p>
+
+</div>
+
+<!-- INTRODUCTION -->
+
+<div class="content-card">
+
+<h2>
+<i class="bi bi-arrow-left-right text-danger"></i>
+What is Skip-Gram?
+</h2>
+
+<p>
+
+Skip-Gram is one of the two architectures of Word2Vec.
+
+Unlike CBOW, which predicts a target word from context words,
+Skip-Gram predicts surrounding context words using the target word.
+
+</p>
+
+<div class="alert alert-danger">
+
+Target Word → Predict Context Words
+
+</div>
+
+</div>
+
+<!-- INTUITION -->
+
+<div class="content-card">
+
+<h2>
+Real Life Intuition
+</h2>
+
+<p>
+
+Suppose we know the word:
+
+</p>
+
+<div class="code-box">
+
+Natural
+
+</div>
+
+<p>
+
+We can often predict nearby words such as:
+
+</p>
+
+<div class="highlight-box">
+
+Love
+
+Language
+
+Processing
+
+</div>
+
+<p>
+
+Skip-Gram trains a neural network to perform this prediction.
+
+</p>
+
+</div>
+
+<!-- MAIN IDEA -->
+
+<div class="content-card">
+
+<h2>
+Main Idea Behind Skip-Gram
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Target Word
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Neural Network
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Context Words
+</div>
+
+</div>
+
+<br>
+
+<div class="code-box">
+
+Input:
+
+Natural
+
+Output:
+
+Love, Language
+
+</div>
+
+</div>
+
+<!-- SENTENCE -->
+
+<div class="content-card">
+
+<h2>
+Example Sentence
+</h2>
+
+<div class="code-box">
+
+I Love Natural Language Processing
+
+</div>
+
+<p>
+
+Assume:
+
+</p>
+
+<div class="highlight-box">
+
+Target Word = Natural
+
+Context Words = Love, Language
+
+</div>
+
+</div>
+
+<!-- WINDOW -->
+
+<div class="content-card">
+
+<h2>
+Understanding Window Size
+</h2>
+
+<p>
+
+Window Size determines how many neighboring words are predicted.
+
+</p>
+
+<div class="code-box">
+
+I Love Natural Language Processing
+
+</div>
+
+<h5 class="mt-4">
+
+Window Size = 1
+
+</h5>
+
+<div class="highlight-box">
+
+Love
+
+Language
+
+</div>
+
+<h5 class="mt-4">
+
+Window Size = 2
+
+</h5>
+
+<div class="highlight-box">
+
+I
+
+Love
+
+Language
+
+Processing
+
+</div>
+
+<div class="alert alert-info mt-3">
+
+Larger windows capture broader context.
+
+</div>
+
+</div>
+
+<!-- ARCHITECTURE -->
+
+<div class="content-card">
+
+<h2>
+Skip-Gram Architecture
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Input Layer
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Hidden Layer
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Output Layer
+</div>
+
+</div>
+
+</div>
+
+<!-- INPUT -->
+
+<div class="content-card">
+
+<h2>
+Input Layer
+</h2>
+
+<p>
+
+The Input Layer receives the target word.
+
+</p>
+
+<div class="code-box">
+
+Target Word:
+
+Natural
+
+</div>
+
+<p>
+
+The target word is converted into a numerical vector.
+
+</p>
+
+</div>
+
+<!-- HIDDEN -->
+
+<div class="content-card">
+
+<h2>
+Hidden Layer
+</h2>
+
+<p>
+
+The hidden layer learns semantic relationships among words.
+
+</p>
+
+<ul>
+
+<li>Word Meaning</li>
+
+<li>Word Similarity</li>
+
+<li>Context Information</li>
+
+<li>Relationships</li>
+
+</ul>
+
+<div class="alert alert-success">
+
+This layer generates the final word embeddings.
+
+</div>
+
+</div>
+
+<!-- OUTPUT -->
+
+<div class="content-card">
+
+<h2>
+Output Layer
+</h2>
+
+<p>
+
+The Output Layer predicts nearby context words.
+
+</p>
+
+<div class="code-box">
+
+Input:
+
+Natural
+
+Output:
+
+Love
+
+Language
+
+</div>
+
+</div>
+
+<!-- TRAINING DATA -->
+
+<div class="content-card">
+
+<h2>
+Training Example
+</h2>
+
+<div class="code-box">
+
+Sentence:
+
+The Cat Drinks Milk
+
+</div>
+
+<table class="table table-bordered">
+
+<tr>
+
+<th>Input (Target)</th>
+<th>Output (Context)</th>
+
+</tr>
+
+<tr>
+
+<td>Cat</td>
+<td>The</td>
+
+</tr>
+
+<tr>
+
+<td>Cat</td>
+<td>Drinks</td>
+
+</tr>
+
+<tr>
+
+<td>Drinks</td>
+<td>Cat</td>
+
+</tr>
+
+<tr>
+
+<td>Drinks</td>
+<td>Milk</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- WORKFLOW -->
+
+<div class="content-card">
+
+<h2>
+Complete Skip-Gram Workflow
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Sentence
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Target Word
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Predict Context
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Learn Embeddings
+</div>
+
+</div>
+
+</div>
+
+<!-- MATHEMATICS -->
+
+<div class="content-card">
+
+<h2>
+Mathematical View
+</h2>
+
+<p>
+
+Skip-Gram tries to maximize:
+
+</p>
+
+<div class="formula-card">
+
+P(Context Words | Target Word)
+
+</div>
+
+<p>
+
+Meaning:
+
+Probability of observing surrounding words
+given a target word.
+
+</p>
+
+</div>
+
+<!-- EXAMPLE -->
+
+<div class="content-card">
+
+<h2>
+How Skip-Gram Learns Meaning
+</h2>
+
+<div class="code-box">
+
+The King rules the Kingdom
+
+The Queen rules the Kingdom
+
+</div>
+
+<p>
+
+The model notices:
+
+</p>
+
+<ul>
+
+<li>King appears near rules and kingdom</li>
+
+<li>Queen appears near rules and kingdom</li>
+
+</ul>
+
+<div class="alert alert-success">
+
+Therefore King and Queen receive similar vectors.
+
+</div>
+
+</div>
+
+<!-- RARE WORDS -->
+
+<div class="content-card">
+
+<h2>
+Why Skip-Gram is Better for Rare Words?
+</h2>
+
+<p>
+
+Each target word generates multiple training examples.
+
+</p>
+
+<div class="code-box">
+
+Target:
+
+Natural
+
+Context:
+
+Love
+
+Language
+
+Processing
+
+</div>
+
+<p>
+
+This helps the model learn rare words more effectively.
+
+</p>
+
+<div class="alert alert-warning">
+
+Skip-Gram performs better than CBOW on rare vocabulary.
+
+</div>
+
+</div>
+
+<!-- CBOW VS SKIPGRAM -->
+
+<div class="content-card">
+
+<h2>
+CBOW vs Skip-Gram
+</h2>
+
+<table class="table table-bordered table-striped">
+
+<tr>
+
+<th>Feature</th>
+<th>CBOW</th>
+<th>Skip-Gram</th>
+
+</tr>
+
+<tr>
+
+<td>Input</td>
+<td>Context Words</td>
+<td>Target Word</td>
+
+</tr>
+
+<tr>
+
+<td>Output</td>
+<td>Target Word</td>
+<td>Context Words</td>
+
+</tr>
+
+<tr>
+
+<td>Training Speed</td>
+<td>Fast</td>
+<td>Slower</td>
+
+</tr>
+
+<tr>
+
+<td>Rare Words</td>
+<td>Average</td>
+<td>Excellent</td>
+
+</tr>
+
+<tr>
+
+<td>Large Datasets</td>
+<td>Good</td>
+<td>Excellent</td>
+
+</tr>
+
+<tr>
+
+<td>Accuracy</td>
+<td>Good</td>
+<td>Higher</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- VISUALIZATION -->
+
+<div class="content-card">
+
+<h2>
+CBOW vs Skip-Gram Visualization
+</h2>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<div class="card border-primary">
+
+<div class="card-body">
+
+<h4>CBOW</h4>
+
+<div class="code-box">
+
+Love + Language
+
+↓
+
+Natural
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="card border-danger">
+
+<div class="card-body">
+
+<h4>Skip-Gram</h4>
+
+<div class="code-box">
+
+Natural
+
+↓
+
+Love + Language
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PYTHON -->
+
+<div class="content-card">
+
+<h2>
+Python Example using Gensim
+</h2>
+
+<div class="code-box">
+
+from gensim.models import Word2Vec
+
+sentences = [
+
+["i","love","nlp"],
+
+["nlp","is","amazing"],
+
+["ai","uses","nlp"]
+
+]
+
+model = Word2Vec(
+    sentences,
+    vector_size=100,
+    window=2,
+    min_count=1,
+    sg=1
+)
+
+print(model.wv["nlp"])
+
+</div>
+
+</div>
+
+<!-- NOTE -->
+
+<div class="content-card">
+
+<h2>
+Important Note
+</h2>
+
+<div class="highlight-box">
+
+sg = 0 → CBOW
+
+sg = 1 → Skip-Gram
+
+</div>
+
+</div>
+
+<!-- ADVANTAGES -->
+
+<div class="content-card">
+
+<h2>
+Advantages of Skip-Gram
+</h2>
+
+<ul>
+
+<li>Learns better embeddings</li>
+
+<li>Handles rare words effectively</li>
+
+<li>Captures semantic relationships</li>
+
+<li>Produces high-quality vectors</li>
+
+<li>Suitable for large corpora</li>
+
+</ul>
+
+</div>
+
+<!-- LIMITATIONS -->
+
+<div class="content-card">
+
+<h2>
+Limitations of Skip-Gram
+</h2>
+
+<ul>
+
+<li>Slower training</li>
+
+<li>Requires more computation</li>
+
+<li>Needs large datasets</li>
+
+<li>Cannot fully understand sentence meaning</li>
+
+</ul>
+
+<div class="alert alert-warning">
+
+Skip-Gram still produces one vector per word.
+
+Different meanings of the same word are not separated.
+
+</div>
+
+</div>
+
+<!-- APPLICATIONS -->
+
+<div class="content-card">
+
+<h2>
+Applications of Skip-Gram
+</h2>
+
+<ul>
+
+<li>Search Engines</li>
+
+<li>Recommendation Systems</li>
+
+<li>Machine Translation</li>
+
+<li>Chatbots</li>
+
+<li>Text Classification</li>
+
+<li>Question Answering Systems</li>
+
+<li>Semantic Search</li>
+
+</ul>
+
+</div>
+
+<!-- QUIZ -->
+
+<div class="content-card">
+
+<h2>
+Quick Quiz
+</h2>
+
+<ol>
+
+<li>What is Skip-Gram?</li>
+
+<li>How is Skip-Gram different from CBOW?</li>
+
+<li>What does Skip-Gram predict?</li>
+
+<li>What is Window Size?</li>
+
+<li>Why is Skip-Gram better for rare words?</li>
+
+<li>What does sg=1 mean?</li>
+
+<li>What are the advantages of Skip-Gram?</li>
+
+</ol>
+
+</div>
+
+<!-- INTERVIEW -->
+
+<div class="content-card">
+
+<h2>
+Interview Questions
+</h2>
+
+<ol>
+
+<li>Explain Skip-Gram architecture.</li>
+
+<li>How does Skip-Gram work?</li>
+
+<li>Difference between CBOW and Skip-Gram?</li>
+
+<li>Why is Skip-Gram better for rare words?</li>
+
+<li>What is Window Size?</li>
+
+<li>What does sg=1 represent?</li>
+
+<li>How are embeddings learned in Skip-Gram?</li>
+
+<li>What are the advantages of Skip-Gram?</li>
+
+<li>What are the limitations of Skip-Gram?</li>
+
+<li>When should Skip-Gram be preferred?</li>
+
+</ol>
+
+</div>
+
+</section>
+<!-- ====================================================== -->
+<!-- PART 2E : GloVe (Global Vectors for Word Representation) -->
+<!-- ====================================================== -->
+
+<section id="glove" class="mt-5">
+
+<div class="text-center mb-5">
+
+<span class="badge bg-warning text-dark fs-6 px-3 py-2">
+PART 2E
+</span>
+
+<h1 class="fw-bold mt-3">
+GloVe (Global Vectors for Word Representation)
+</h1>
+
+<p class="text-muted">
+
+Combining Global Statistics with Semantic Understanding
+
+</p>
+
+</div>
+
+<!-- INTRODUCTION -->
+
+<div class="content-card">
+
+<h2>
+<i class="bi bi-globe2 text-warning"></i>
+What is GloVe?
+</h2>
+
+<p>
+
+GloVe (Global Vectors for Word Representation) is a word embedding technique developed by Stanford University.
+
+It creates meaningful word vectors by analyzing how frequently words appear together across an entire corpus.
+
+</p>
+
+<div class="alert alert-warning">
+
+Word2Vec learns from local context.
+
+GloVe learns from both local context and global statistics.
+
+</div>
+
+</div>
+
+<!-- WHY GLOVE -->
+
+<div class="content-card">
+
+<h2>
+Why Was GloVe Introduced?
+</h2>
+
+<p>
+
+Word2Vec is excellent at learning local context.
+
+However, it does not fully utilize the overall statistics of the corpus.
+
+</p>
+
+<div class="code-box">
+
+King appears with:
+
+royal
+queen
+palace
+
+Queen appears with:
+
+royal
+king
+palace
+
+</div>
+
+<p>
+
+GloVe studies these global relationships across the entire dataset.
+
+</p>
+
+</div>
+
+<!-- IDEA -->
+
+<div class="content-card">
+
+<h2>
+Main Idea Behind GloVe
+</h2>
+
+<p>
+
+Words that frequently occur together should have similar vector representations.
+
+</p>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Word Co-occurrence Matrix
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Matrix Factorization
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Word Embeddings
+</div>
+
+</div>
+
+</div>
+
+<!-- CO OCCURRENCE -->
+
+<div class="content-card">
+
+<h2>
+What is a Co-occurrence Matrix?
+</h2>
+
+<p>
+
+A Co-occurrence Matrix stores how often words appear together.
+
+</p>
+
+<div class="code-box">
+
+Sentence:
+
+I Love NLP
+
+NLP Loves AI
+
+</div>
+
+<table class="table table-bordered">
+
+<tr>
+
+<th>Word</th>
+<th>I</th>
+<th>Love</th>
+<th>NLP</th>
+<th>AI</th>
+
+</tr>
+
+<tr>
+
+<td>I</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Love</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>NLP</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+
+</tr>
+
+<tr>
+
+<td>AI</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- LOCAL VS GLOBAL -->
+
+<div class="content-card">
+
+<h2>
+Local Context vs Global Context
+</h2>
+
+<table class="table table-bordered table-striped">
+
+<tr>
+
+<th>Feature</th>
+<th>Word2Vec</th>
+<th>GloVe</th>
+
+</tr>
+
+<tr>
+
+<td>Local Context</td>
+<td>✔</td>
+<td>✔</td>
+
+</tr>
+
+<tr>
+
+<td>Global Statistics</td>
+<td>❌</td>
+<td>✔</td>
+
+</tr>
+
+<tr>
+
+<td>Corpus Wide Learning</td>
+<td>Limited</td>
+<td>Strong</td>
+
+</tr>
+
+<tr>
+
+<td>Semantic Relationships</td>
+<td>Good</td>
+<td>Excellent</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- MATRIX FACTORIZATION -->
+
+<div class="content-card">
+
+<h2>
+Matrix Factorization
+</h2>
+
+<p>
+
+The Co-occurrence Matrix can become extremely large.
+
+GloVe compresses this information into smaller dense vectors.
+
+</p>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Huge Matrix
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Factorization
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Dense Embeddings
+</div>
+
+</div>
+
+</div>
+
+<!-- FORMULA -->
+
+<div class="content-card">
+
+<h2>
+GloVe Mathematical Formula
+</h2>
+
+<div class="formula-card">
+
+wᵢᵀ wⱼ + bᵢ + bⱼ
+
+≈
+
+log(Xᵢⱼ)
+
+</div>
+
+<br>
+
+<p>
+
+Where:
+
+</p>
+
+<ul>
+
+<li>wᵢ = Word Vector</li>
+
+<li>wⱼ = Context Vector</li>
+
+<li>bᵢ = Word Bias</li>
+
+<li>bⱼ = Context Bias</li>
+
+<li>Xᵢⱼ = Co-occurrence Count</li>
+
+</ul>
+
+</div>
+
+<!-- SIMPLE EXPLANATION -->
+
+<div class="content-card">
+
+<h2>
+Simple Explanation of the Formula
+</h2>
+
+<p>
+
+The formula tries to ensure:
+
+</p>
+
+<div class="highlight-box">
+
+Words that appear together frequently
+
+↓
+
+Should have similar vectors
+
+</div>
+
+<p>
+
+The model continuously adjusts vectors until the mathematical relationship matches real-world word co-occurrences.
+
+</p>
+
+</div>
+
+<!-- EXAMPLE -->
+
+<div class="content-card">
+
+<h2>
+Example: Learning Relationships
+</h2>
+
+<div class="code-box">
+
+King → Royal, Palace, Queen
+
+Queen → Royal, Palace, King
+
+Doctor → Hospital, Patient
+
+Nurse → Hospital, Patient
+
+</div>
+
+<p>
+
+Because these words appear in similar contexts, their vectors become similar.
+
+</p>
+
+<div class="alert alert-success">
+
+GloVe automatically learns semantic similarity.
+
+</div>
+
+</div>
+
+<!-- ANALOGY -->
+
+<div class="content-card">
+
+<h2>
+Famous GloVe Analogy
+</h2>
+
+<div class="highlight-box">
+
+King
+
+− Man
+
++ Woman
+
+=
+
+Queen
+
+</div>
+
+<br>
+
+<div class="highlight-box">
+
+Paris
+
+− France
+
++ Italy
+
+=
+
+Rome
+
+</div>
+
+<p class="mt-3">
+
+These relationships emerge naturally from word co-occurrence statistics.
+
+</p>
+
+</div>
+
+<!-- TRAINING -->
+
+<div class="content-card">
+
+<h2>
+GloVe Training Process
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Large Corpus
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Build Co-occurrence Matrix
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Matrix Factorization
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Generate Embeddings
+</div>
+
+</div>
+
+</div>
+
+<!-- VECTOR SPACE -->
+
+<div class="content-card">
+
+<h2>
+Embedding Space Visualization
+</h2>
+
+<div class="code-box">
+
+King      ●
+
+Queen     ●
+
+Prince    ●
+
+Princess  ●
+
+Doctor    ●
+
+Nurse     ●
+
+Hospital  ●
+
+</div>
+
+<p>
+
+Words with similar meanings cluster together.
+
+</p>
+
+</div>
+
+<!-- WORD2VEC VS GLOVE -->
+
+<div class="content-card">
+
+<h2>
+Word2Vec vs GloVe
+</h2>
+
+<table class="table table-bordered table-striped">
+
+<tr>
+
+<th>Feature</th>
+<th>Word2Vec</th>
+<th>GloVe</th>
+
+</tr>
+
+<tr>
+
+<td>Learning Method</td>
+<td>Prediction Based</td>
+<td>Count Based</td>
+
+</tr>
+
+<tr>
+
+<td>Uses Context</td>
+<td>Local</td>
+<td>Global + Local</td>
+
+</tr>
+
+<tr>
+
+<td>Co-occurrence Matrix</td>
+<td>❌</td>
+<td>✔</td>
+
+</tr>
+
+<tr>
+
+<td>Semantic Quality</td>
+<td>High</td>
+<td>Very High</td>
+
+</tr>
+
+<tr>
+
+<td>Training Speed</td>
+<td>Fast</td>
+<td>Moderate</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- PYTHON -->
+
+<div class="content-card">
+
+<h2>
+Using Pretrained GloVe Embeddings
+</h2>
+
+<div class="code-box">
+
+import gensim.downloader as api
+
+glove = api.load("glove-wiki-gigaword-100")
+
+print(
+glove.most_similar("king")
+)
+
+</div>
+
+</div>
+
+<!-- ADVANTAGES -->
+
+<div class="content-card">
+
+<h2>
+Advantages of GloVe
+</h2>
+
+<ul>
+
+<li>Captures semantic meaning</li>
+
+<li>Uses global corpus statistics</li>
+
+<li>Produces high-quality embeddings</li>
+
+<li>Learns word relationships</li>
+
+<li>Efficient for large datasets</li>
+
+<li>Excellent for NLP applications</li>
+
+</ul>
+
+</div>
+
+<!-- LIMITATIONS -->
+
+<div class="content-card">
+
+<h2>
+Limitations of GloVe
+</h2>
+
+<ul>
+
+<li>Cannot handle unseen words</li>
+
+<li>Static embeddings</li>
+
+<li>One word = One vector</li>
+
+<li>Cannot handle multiple meanings effectively</li>
+
+<li>Requires large training corpora</li>
+
+</ul>
+
+<div class="alert alert-danger">
+
+Bank (financial)
+
+Bank (river)
+
+↓
+
+Same vector
+
+</div>
+
+</div>
+
+<!-- APPLICATIONS -->
+
+<div class="content-card">
+
+<h2>
+Applications of GloVe
+</h2>
+
+<ul>
+
+<li>Chatbots</li>
+
+<li>Machine Translation</li>
+
+<li>Search Engines</li>
+
+<li>Recommendation Systems</li>
+
+<li>Question Answering Systems</li>
+
+<li>Text Classification</li>
+
+<li>Sentiment Analysis</li>
+
+<li>Information Retrieval</li>
+
+</ul>
+
+</div>
+
+<!-- SUMMARY -->
+
+<div class="content-card">
+
+<h2>
+GloVe Summary
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Corpus
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Co-occurrence Matrix
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Factorization
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Dense Embeddings
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Semantic Understanding
+</div>
+
+</div>
+
+</div>
+
+<!-- QUIZ -->
+
+<div class="content-card">
+
+<h2>
+Quick Quiz
+</h2>
+
+<ol>
+
+<li>What does GloVe stand for?</li>
+
+<li>What is a Co-occurrence Matrix?</li>
+
+<li>Why was GloVe introduced?</li>
+
+<li>How is GloVe different from Word2Vec?</li>
+
+<li>What is Matrix Factorization?</li>
+
+<li>Why are King and Queen close in vector space?</li>
+
+<li>What are the limitations of GloVe?</li>
+
+</ol>
+
+</div>
+
+<!-- INTERVIEW QUESTIONS -->
+
+<div class="content-card">
+
+<h2>
+Interview Questions
+</h2>
+
+<ol>
+
+<li>Explain GloVe Embeddings.</li>
+
+<li>How does GloVe work?</li>
+
+<li>What is a Co-occurrence Matrix?</li>
+
+<li>Difference between Word2Vec and GloVe?</li>
+
+<li>What is Matrix Factorization?</li>
+
+<li>Why does GloVe produce better semantic vectors?</li>
+
+<li>What are the advantages of GloVe?</li>
+
+<li>What are its limitations?</li>
+
+<li>Explain the King − Man + Woman = Queen analogy.</li>
+
+<li>When would you use GloVe instead of Word2Vec?</li>
+
+</ol>
+
+</div>
+
+</section>
+<!-- ====================================================== -->
+<!-- PART 2F : FASTTEXT -->
+<!-- ====================================================== -->
+
+<section id="fasttext" class="mt-5">
+
+<div class="text-center mb-5">
+
+<span class="badge bg-success fs-6 px-3 py-2">
+PART 2F
+</span>
+
+<h1 class="fw-bold mt-3">
+FastText
+</h1>
+
+<p class="text-muted">
+
+Solving the Out-Of-Vocabulary (OOV) Problem using Subword Information
+
+</p>
+
+</div>
+
+<!-- INTRODUCTION -->
+
+<div class="content-card">
+
+<h2>
+<i class="bi bi-lightning-charge-fill text-success"></i>
+What is FastText?
+</h2>
+
+<p>
+
+FastText is a Word Embedding algorithm developed by Facebook AI Research (FAIR).
+
+It improves Word2Vec by learning not only complete words but also parts of words called subwords.
+
+</p>
+
+<div class="alert alert-success">
+
+Word2Vec learns from words.
+
+FastText learns from words + character patterns.
+
+</div>
+
+</div>
+
+<!-- WHY FASTTEXT -->
+
+<div class="content-card">
+
+<h2>
+Why Was FastText Introduced?
+</h2>
+
+<p>
+
+Word2Vec and GloVe have a major limitation.
+
+</p>
+
+<div class="code-box">
+
+Known Word:
+
+computer
+
+Unknown Word:
+
+computers
+
+computerized
+
+computerization
+
+</div>
+
+<p>
+
+Traditional embeddings treat these as completely different words.
+
+</p>
+
+<div class="alert alert-danger">
+
+Unknown words cannot be represented properly.
+
+This is called the OOV Problem.
+
+</div>
+
+</div>
+
+<!-- OOV -->
+
+<div class="content-card">
+
+<h2>
+What is OOV (Out Of Vocabulary)?
+</h2>
+
+<p>
+
+OOV words are words that were never seen during training.
+
+</p>
+
+<div class="code-box">
+
+Training Vocabulary
+
+cat
+dog
+car
+
+Testing Word
+
+cats
+
+</div>
+
+<p>
+
+Word2Vec:
+
+❌ Cannot generate embedding
+
+FastText:
+
+✔ Can generate embedding
+
+</p>
+
+</div>
+
+<!-- MAIN IDEA -->
+
+<div class="content-card">
+
+<h2>
+Main Idea Behind FastText
+</h2>
+
+<p>
+
+FastText breaks words into smaller character-level chunks called N-Grams.
+
+</p>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Word
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Character N-Grams
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Embeddings
+</div>
+
+</div>
+
+</div>
+
+<!-- CHARACTER NGRAMS -->
+
+<div class="content-card">
+
+<h2>
+Character N-Grams
+</h2>
+
+<p>
+
+Consider the word:
+
+</p>
+
+<div class="code-box">
+
+Computer
+
+</div>
+
+<p>
+
+FastText generates character N-Grams.
+
+</p>
+
+<div class="highlight-box">
+
+&lt;co
+
+com
+
+omp
+
+mpu
+
+put
+
+ute
+
+ter
+
+er&gt;
+
+</div>
+
+<p>
+
+&lt; and &gt; represent beginning and ending boundaries.
+
+</p>
+
+</div>
+
+<!-- VISUALIZATION -->
+
+<div class="content-card">
+
+<h2>
+Word Construction Visualization
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Computer
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Subwords
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Embeddings
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Final Vector
+</div>
+
+</div>
+
+</div>
+
+<!-- EXAMPLE -->
+
+<div class="content-card">
+
+<h2>
+Example: Unknown Word Handling
+</h2>
+
+<p>
+
+Suppose the model has seen:
+
+</p>
+
+<div class="code-box">
+
+play
+
+playing
+
+player
+
+played
+
+</div>
+
+<p>
+
+Now a new word appears:
+
+</p>
+
+<div class="code-box">
+
+playfulness
+
+</div>
+
+<p>
+
+FastText can still understand it because it recognizes:
+
+</p>
+
+<div class="highlight-box">
+
+pla
+
+lay
+
+ayf
+
+yfu
+
+ful
+
+ness
+
+</div>
+
+</div>
+
+<!-- ARCHITECTURE -->
+
+<div class="content-card">
+
+<h2>
+FastText Architecture
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Input Word
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Character N-Grams
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Neural Network
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Word Embedding
+</div>
+
+</div>
+
+</div>
+
+<!-- TRAINING -->
+
+<div class="content-card">
+
+<h2>
+Training Process
+</h2>
+
+<ol>
+
+<li>Collect Text Corpus</li>
+
+<li>Tokenize Text</li>
+
+<li>Generate Character N-Grams</li>
+
+<li>Train Neural Network</li>
+
+<li>Learn Subword Embeddings</li>
+
+<li>Combine Subwords into Final Word Vector</li>
+
+</ol>
+
+</div>
+
+<!-- COMPARISON -->
+
+<div class="content-card">
+
+<h2>
+Word2Vec vs GloVe vs FastText
+</h2>
+
+<table class="table table-bordered table-striped">
+
+<tr>
+
+<th>Feature</th>
+<th>Word2Vec</th>
+<th>GloVe</th>
+<th>FastText</th>
+
+</tr>
+
+<tr>
+
+<td>Word Embeddings</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+
+</tr>
+
+<tr>
+
+<td>Context Learning</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+
+</tr>
+
+<tr>
+
+<td>Character Information</td>
+<td>❌</td>
+<td>❌</td>
+<td>✔</td>
+
+</tr>
+
+<tr>
+
+<td>Handles OOV Words</td>
+<td>❌</td>
+<td>❌</td>
+<td>✔</td>
+
+</tr>
+
+<tr>
+
+<td>Morphological Understanding</td>
+<td>❌</td>
+<td>❌</td>
+<td>✔</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- MORPHOLOGY -->
+
+<div class="content-card">
+
+<h2>
+Morphological Understanding
+</h2>
+
+<p>
+
+Morphology refers to the structure of words.
+
+</p>
+
+<div class="code-box">
+
+teach
+
+teacher
+
+teaching
+
+teaches
+
+</div>
+
+<p>
+
+FastText understands that all these words are related because they share similar character patterns.
+
+</p>
+
+</div>
+
+<!-- VECTOR EXAMPLE -->
+
+<div class="content-card">
+
+<h2>
+FastText Embedding Example
+</h2>
+
+<div class="code-box">
+
+computer
+
+[0.45, 0.76, 0.23, 0.89]
+
+computerized
+
+[0.44, 0.75, 0.25, 0.87]
+
+</div>
+
+<p>
+
+Notice that both vectors remain very similar.
+
+</p>
+
+</div>
+
+<!-- PYTHON -->
+
+<div class="content-card">
+
+<h2>
+Python Example
+</h2>
+
+<div class="code-box">
+
+from gensim.models import FastText
+
+sentences = [
+
+["i","love","nlp"],
+
+["nlp","is","amazing"],
+
+["ai","uses","nlp"]
+
+]
+
+model = FastText(
+    sentences,
+    vector_size=100,
+    window=5,
+    min_count=1
+)
+
+print(model.wv["nlp"])
+
+</div>
+
+</div>
+
+<!-- REAL WORLD -->
+
+<div class="content-card">
+
+<h2>
+Real World Applications
+</h2>
+
+<ul>
+
+<li>Chatbots</li>
+
+<li>Search Engines</li>
+
+<li>Spell Correction</li>
+
+<li>Machine Translation</li>
+
+<li>Text Classification</li>
+
+<li>Question Answering</li>
+
+<li>Recommendation Systems</li>
+
+<li>Multilingual NLP</li>
+
+</ul>
+
+</div>
+
+<!-- ADVANTAGES -->
+
+<div class="content-card">
+
+<h2>
+Advantages of FastText
+</h2>
+
+<ul>
+
+<li>Handles OOV Words</li>
+
+<li>Uses Character-Level Information</li>
+
+<li>Captures Word Structure</li>
+
+<li>Better for Rare Words</li>
+
+<li>Works Well on Small Datasets</li>
+
+<li>Excellent for Morphologically Rich Languages</li>
+
+</ul>
+
+</div>
+
+<!-- LIMITATIONS -->
+
+<div class="content-card">
+
+<h2>
+Limitations of FastText
+</h2>
+
+<ul>
+
+<li>Larger Model Size</li>
+
+<li>More Memory Usage</li>
+
+<li>Slower Training than Word2Vec</li>
+
+<li>Still Produces Static Embeddings</li>
+
+<li>Cannot Fully Understand Sentence Meaning</li>
+
+</ul>
+
+<div class="alert alert-warning">
+
+FastText improves word understanding,
+but it still generates one embedding per word.
+
+</div>
+
+</div>
+
+<!-- EVOLUTION -->
+
+<div class="content-card">
+
+<h2>
+Evolution of Word Embeddings
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Word2Vec
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+GloVe
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+FastText
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Transformers
+</div>
+
+</div>
+
+</div>
+
+<!-- QUIZ -->
+
+<div class="content-card">
+
+<h2>
+Quick Quiz
+</h2>
+
+<ol>
+
+<li>What is FastText?</li>
+
+<li>Why was FastText introduced?</li>
+
+<li>What is OOV?</li>
+
+<li>What are Character N-Grams?</li>
+
+<li>How does FastText handle unknown words?</li>
+
+<li>Difference between Word2Vec and FastText?</li>
+
+<li>What is morphology?</li>
+
+<li>What are the advantages of FastText?</li>
+
+</ol>
+
+</div>
+
+<!-- INTERVIEW -->
+
+<div class="content-card">
+
+<h2>
+Interview Questions
+</h2>
+
+<ol>
+
+<li>Explain FastText.</li>
+
+<li>What is the OOV problem?</li>
+
+<li>How does FastText solve OOV?</li>
+
+<li>What are Character N-Grams?</li>
+
+<li>Difference between Word2Vec, GloVe and FastText?</li>
+
+<li>What is morphological understanding?</li>
+
+<li>Why is FastText useful for rare words?</li>
+
+<li>What are the limitations of FastText?</li>
+
+<li>How does FastText generate embeddings?</li>
+
+<li>When should FastText be preferred?</li>
+
+</ol>
+
+</div>
+
+</section>
+<!-- ====================================================== -->
+<!-- PART 3A : CONTEXTUAL EMBEDDINGS & TRANSFORMERS -->
+<!-- ====================================================== -->
+
+<section id="contextual_embeddings" class="mt-5">
+
+<div class="text-center mb-5">
+
+<span class="badge bg-dark fs-6 px-3 py-2">
+PART 3A
+</span>
+
+<h1 class="fw-bold mt-3">
+Contextual Embeddings & Transformers
+</h1>
+
+<p class="text-muted">
+
+From Static Word Embeddings to Modern Large Language Models
+
+</p>
+
+</div>
+
+<!-- INTRODUCTION -->
+
+<div class="content-card">
+
+<h2>
+<i class="bi bi-cpu-fill text-primary"></i>
+The Next Evolution in NLP
+</h2>
+
+<p>
+
+We have already studied:
+
+</p>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+One Hot
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+BoW
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+TF-IDF
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Word2Vec
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+GloVe
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+FastText
+</div>
+
+</div>
+
+<br>
+
+<p>
+
+These methods improved NLP significantly.
+
+However they still have a major limitation.
+
+</p>
+
+<div class="alert alert-danger">
+
+A word always receives the same vector,
+regardless of the sentence.
+
+</div>
+
+</div>
+
+<!-- PROBLEM -->
+
+<div class="content-card">
+
+<h2>
+Problem with Traditional Embeddings
+</h2>
+
+<p>
+
+Consider the word:
+
+</p>
+
+<div class="highlight-box">
+
+Bank
+
+</div>
+
+<br>
+
+<div class="code-box">
+
+Sentence 1
+
+I deposited money in the bank.
+
+</div>
+
+<br>
+
+<div class="code-box">
+
+Sentence 2
+
+Children are playing near the river bank.
+
+</div>
+
+<p>
+
+Humans understand that "bank" has different meanings.
+
+</p>
+
+<div class="alert alert-warning">
+
+Word2Vec, GloVe and FastText generate the SAME vector.
+
+</div>
+
+</div>
+
+<!-- POLYSEMY -->
+
+<div class="content-card">
+
+<h2>
+Polysemy Problem
+</h2>
+
+<p>
+
+Polysemy means:
+
+</p>
+
+<div class="highlight-box">
+
+One Word
+
+↓
+
+Multiple Meanings
+
+</div>
+
+<br>
+
+<table class="table table-bordered">
+
+<tr>
+
+<th>Word</th>
+<th>Meaning 1</th>
+<th>Meaning 2</th>
+
+</tr>
+
+<tr>
+
+<td>Bank</td>
+<td>Financial Institution</td>
+<td>River Side</td>
+
+</tr>
+
+<tr>
+
+<td>Bat</td>
+<td>Animal</td>
+<td>Cricket Bat</td>
+
+</tr>
+
+<tr>
+
+<td>Apple</td>
+<td>Fruit</td>
+<td>Technology Company</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- STATIC VS CONTEXTUAL -->
+
+<div class="content-card">
+
+<h2>
+Static vs Contextual Embeddings
+</h2>
+
+<table class="table table-bordered table-striped">
+
+<tr>
+
+<th>Feature</th>
+<th>Static Embeddings</th>
+<th>Contextual Embeddings</th>
+
+</tr>
+
+<tr>
+
+<td>One Vector per Word</td>
+<td>✔</td>
+<td>❌</td>
+
+</tr>
+
+<tr>
+
+<td>Context Awareness</td>
+<td>❌</td>
+<td>✔</td>
+
+</tr>
+
+<tr>
+
+<td>Handles Polysemy</td>
+<td>❌</td>
+<td>✔</td>
+
+</tr>
+
+<tr>
+
+<td>Sentence Understanding</td>
+<td>Limited</td>
+<td>Excellent</td>
+
+</tr>
+
+<tr>
+
+<td>Used in LLMs</td>
+<td>❌</td>
+<td>✔</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- CONTEXTUAL EMBEDDINGS -->
+
+<div class="content-card">
+
+<h2>
+What are Contextual Embeddings?
+</h2>
+
+<p>
+
+Contextual Embeddings generate different vectors for the same word depending on the sentence.
+
+</p>
+
+<div class="code-box">
+
+Bank (Money Context)
+
+↓
+
+[0.45, 0.21, 0.87]
+
+</div>
+
+<br>
+
+<div class="code-box">
+
+Bank (River Context)
+
+↓
+
+[0.12, 0.94, 0.32]
+
+</div>
+
+<div class="alert alert-success">
+
+Same word
+
+Different meanings
+
+Different vectors
+
+</div>
+
+</div>
+
+<!-- TRANSFORMERS -->
+
+<div class="content-card">
+
+<h2>
+Introduction to Transformers
+</h2>
+
+<p>
+
+Transformers are Deep Learning architectures introduced by Google in 2017.
+
+They completely changed NLP.
+
+</p>
+
+<div class="highlight-box">
+
+Paper:
+
+Attention Is All You Need
+
+(2017)
+
+</div>
+
+<br>
+
+<div class="alert alert-primary">
+
+Almost all modern NLP systems use Transformers.
+
+</div>
+
+</div>
+
+<!-- WHY TRANSFORMERS -->
+
+<div class="content-card">
+
+<h2>
+Why Transformers Replaced RNNs and LSTMs?
+</h2>
+
+<table class="table table-bordered table-striped">
+
+<tr>
+
+<th>Problem</th>
+<th>RNN/LSTM</th>
+<th>Transformer</th>
+
+</tr>
+
+<tr>
+
+<td>Sequential Processing</td>
+<td>Slow</td>
+<td>Fast</td>
+
+</tr>
+
+<tr>
+
+<td>Long Context</td>
+<td>Difficult</td>
+<td>Excellent</td>
+
+</tr>
+
+<tr>
+
+<td>Parallel Processing</td>
+<td>❌</td>
+<td>✔</td>
+
+</tr>
+
+<tr>
+
+<td>Training Speed</td>
+<td>Slow</td>
+<td>Fast</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- ATTENTION -->
+
+<div class="content-card">
+
+<h2>
+Attention Mechanism
+</h2>
+
+<p>
+
+Attention helps the model focus on important words while processing a sentence.
+
+</p>
+
+<div class="code-box">
+
+The cat sat on the mat.
+
+</div>
+
+<p>
+
+When processing:
+
+</p>
+
+<div class="highlight-box">
+
+cat
+
+</div>
+
+<p>
+
+the model gives more attention to:
+
+</p>
+
+<div class="highlight-box">
+
+sat
+
+mat
+
+</div>
+
+</div>
+
+<!-- SELF ATTENTION -->
+
+<div class="content-card">
+
+<h2>
+Self-Attention
+</h2>
+
+<p>
+
+Self-Attention allows every word to look at every other word in the sentence.
+
+</p>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Word 1
+</div>
+
+<div class="arrow">↔</div>
+
+<div class="pipeline-box">
+Word 2
+</div>
+
+<div class="arrow">↔</div>
+
+<div class="pipeline-box">
+Word 3
+</div>
+
+<div class="arrow">↔</div>
+
+<div class="pipeline-box">
+Word 4
+</div>
+
+</div>
+
+<br>
+
+<div class="alert alert-success">
+
+Every word understands its relationship with every other word.
+
+</div>
+
+</div>
+
+<!-- EXAMPLE -->
+
+<div class="content-card">
+
+<h2>
+Self-Attention Example
+</h2>
+
+<div class="code-box">
+
+The animal didn't cross the street
+because it was tired.
+
+</div>
+
+<p>
+
+Question:
+
+Who was tired?
+
+</p>
+
+<div class="highlight-box">
+
+it → animal
+
+</div>
+
+<p>
+
+Self-Attention helps identify such relationships.
+
+</p>
+
+</div>
+
+<!-- TRANSFORMER ARCHITECTURE -->
+
+<div class="content-card">
+
+<h2>
+Transformer Architecture
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+Input Text
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Embedding Layer
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Self-Attention
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Feed Forward
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Output
+</div>
+
+</div>
+
+</div>
+
+<!-- ENCODER DECODER -->
+
+<div class="content-card">
+
+<h2>
+Encoder and Decoder
+</h2>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<div class="card border-primary">
+
+<div class="card-body">
+
+<h4>Encoder</h4>
+
+<ul>
+
+<li>Reads Input</li>
+
+<li>Understands Context</li>
+
+<li>Creates Representation</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="card border-success">
+
+<div class="card-body">
+
+<h4>Decoder</h4>
+
+<ul>
+
+<li>Generates Output</li>
+
+<li>Creates Sentences</li>
+
+<li>Predicts Next Words</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- TRANSFORMER FAMILY -->
+
+<div class="content-card">
+
+<h2>
+Transformer Family
+</h2>
+
+<table class="table table-bordered">
+
+<tr>
+
+<th>Model</th>
+<th>Architecture</th>
+<th>Main Purpose</th>
+
+</tr>
+
+<tr>
+
+<td>BERT</td>
+<td>Encoder</td>
+<td>Understanding Text</td>
+
+</tr>
+
+<tr>
+
+<td>GPT</td>
+<td>Decoder</td>
+<td>Generating Text</td>
+
+</tr>
+
+<tr>
+
+<td>T5</td>
+<td>Encoder + Decoder</td>
+<td>Both Tasks</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- BERT -->
+
+<div class="content-card">
+
+<h2>
+BERT
+</h2>
+
+<p>
+
+BERT stands for:
+
+</p>
+
+<div class="highlight-box">
+
+Bidirectional Encoder Representations from Transformers
+
+</div>
+
+<p>
+
+BERT reads sentences in both directions.
+
+</p>
+
+<div class="alert alert-info">
+
+Excellent for understanding language.
+
+</div>
+
+</div>
+
+<!-- GPT -->
+
+<div class="content-card">
+
+<h2>
+GPT
+</h2>
+
+<p>
+
+GPT stands for:
+
+</p>
+
+<div class="highlight-box">
+
+Generative Pre-trained Transformer
+
+</div>
+
+<p>
+
+GPT predicts the next word repeatedly to generate text.
+
+</p>
+
+<div class="code-box">
+
+Artificial Intelligence is
+
+↓
+
+changing
+
+↓
+
+the
+
+↓
+
+world
+
+</div>
+
+</div>
+
+<!-- MODERN LLMS -->
+
+<div class="content-card">
+
+<h2>
+Modern LLMs
+</h2>
+
+<p>
+
+Modern Large Language Models are built using Transformer architectures.
+
+</p>
+
+<ul>
+
+<li>GPT-4</li>
+<li>GPT-5</li>
+<li>Gemini</li>
+<li>Claude</li>
+<li>Llama</li>
+<li>Mistral</li>
+
+</ul>
+
+<div class="alert alert-success">
+
+Transformers are the foundation of Generative AI.
+
+</div>
+
+</div>
+
+<!-- EVOLUTION -->
+
+<div class="content-card">
+
+<h2>
+Evolution of NLP
+</h2>
+
+<div class="pipeline">
+
+<div class="pipeline-box">
+TF-IDF
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Word2Vec
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+GloVe
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+FastText
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+Transformers
+</div>
+
+<div class="arrow">→</div>
+
+<div class="pipeline-box">
+LLMs
+</div>
+
+</div>
+
+</div>
+
+<!-- QUIZ -->
+
+<div class="content-card">
+
+<h2>
+Quick Quiz
+</h2>
+
+<ol>
+
+<li>What are Contextual Embeddings?</li>
+<li>What is Polysemy?</li>
+<li>Why do static embeddings fail?</li>
+<li>What is a Transformer?</li>
+<li>What is Attention?</li>
+<li>What is Self-Attention?</li>
+<li>Difference between BERT and GPT?</li>
+<li>Why are Transformers important?</li>
+
+</ol>
+
+</div>
+
+<!-- INTERVIEW -->
+
+<div class="content-card">
+
+<h2>
+Interview Questions
+</h2>
+
+<ol>
+
+<li>Explain Contextual Embeddings.</li>
+<li>Difference between static and contextual embeddings?</li>
+<li>What problem do Transformers solve?</li>
+<li>What is Self-Attention?</li>
+<li>Why are Transformers faster than RNNs?</li>
+<li>Explain Encoder and Decoder.</li>
+<li>Difference between BERT and GPT?</li>
+<li>What is Polysemy?</li>
+<li>How do LLMs use Transformers?</li>
+<li>Why did Transformers revolutionize NLP?</li>
+
+</ol>
+
+</div>
+
+</section>
 
 </div>
 
